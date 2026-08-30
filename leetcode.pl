@@ -110,15 +110,16 @@ sub write_json_file {
 my @inputs;
 
 for my $line (@contents) {
-  my $input_pattern = "输入：";
-  my $output_pattern = "输出：";
+  my @patterns = ("Input: ", "输入：");
 
-  if ($line =~ m/$input_pattern/) {
-    $line =~ s/$input_pattern//g;
-    $line = trim $line;
-    push @inputs, {
-      "test" => parse_input($line)
-    };
+  for my $input_pattern (@patterns) {
+    if ($line =~ m/$input_pattern/) {
+      $line =~ s/$input_pattern//g;
+      $line = trim $line;
+      push @inputs, {
+        "test" => parse_input($line)
+      };
+    }
   }
 }
 
