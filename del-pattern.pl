@@ -62,9 +62,9 @@ while (my $file = $iter->()) {
     }
 
     if ($dry_run) {
-      print("$basename\n=>\t$new_base\n");
+      print("$basename\n=>\t$new_base\n\n");
     } else {
-      print("$file\n=>\t$new_file\n");
+      print("$file\n=>\t$new_file\n\n");
       $file->move($new_file);
     }
   }
