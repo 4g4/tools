@@ -41,7 +41,7 @@ HELP
 }
 
 if ($zlib) {
-  $pattern = " \(z-library.sk, 1lib.sk, z-lib.sk\)";
+  $pattern = " (z-library.sk, 1lib.sk, z-lib.sk)";
 }
 
 if (length $pattern == 0) {
@@ -59,7 +59,7 @@ while (my $file = $iter->()) {
 
   my $parent = $file->parent;
   my $new_base = $basename;
-  $new_base =~ s/$pattern//g;
+  $new_base =~ s/\Q$pattern\E//g;
 
   if ($basename ne $new_base) {
     my $new_file = $parent->child($new_base);
